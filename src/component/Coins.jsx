@@ -26,10 +26,10 @@ const Coins = () => {
   const btns = new Array(132).fill(1)
 
   useEffect(()=>{
-    const fetchCoin = async()=>{
+    const fetchCoins = async()=>{
       try {
         const{data} = await axios.get(`${server}/coins/markets/?vs_currency=${currency}&page=${page}`);
-      console.log(data)
+      // console.log(data)
       setCoins(data)
       setLoading(false)
       } catch (error) {
@@ -39,7 +39,7 @@ const Coins = () => {
       }
     }
     
-    fetchCoin();
+    fetchCoins();
   },[currency,page])
 
   if(error) return <ErrorComponent message={"Error While Fetching Coins"} />
@@ -56,7 +56,7 @@ const Coins = () => {
           </HStack>
         </RadioGroup>
 
-        <HStack wrap={'wrap'}>
+        <HStack wrap={'wrap'} justifyContent={'space-evenly'} >
           {
             coins.map((i)=>(
               <CoinCard id={i.id} key={i.id} name={i.name} price={i.current_price} img={i.image} symbol={i.symbol}  currencySymbol={currencySymbol} />
@@ -67,8 +67,10 @@ const Coins = () => {
         </HStack>
         <HStack w={'full'} overflowX={'auto'} p={'8'}>
           {
+        
             btns.map((item,index)=>(
-              <Button bgColor={"blackAlpha.900"} color={'white'} onClick={()=>changePage(index+1)} >{index+1}</Button>
+              
+              <Button key={index} bgColor={"blackAlpha.900"} color={'white'} onClick={()=>changePage(index+1)} >{index+1}</Button>
               
             ))
           }
