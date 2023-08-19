@@ -27,40 +27,40 @@ const CoinDetails = () => {
     switch (key) {
       case "24h":
         setDays("24h");
-        // setLoading(true);
+        setLoading(true);
         break;
       case "7d":
         setDays("7d");
-        // setLoading(true);
+        setLoading(true);
         break;
       case "14d":
         setDays("14d");
-        // setLoading(true);
+        setLoading(true);
         break;
       case "30d":
         setDays("30d");
-        // setLoading(true);
+        setLoading(true);
         break;
       case "60d":
         setDays("60d");
-        // setLoading(true);
+        setLoading(true);
         break;
       case "200d":
         setDays("200d");
-        // setLoading(true);
+        setLoading(true);
         break;
       case "1y":
         setDays("365d");
-        // setLoading(true);
+        setLoading(true);
         break;
       case "max":
         setDays("max");
-        // setLoading(true);
+        setLoading(true);
         break;
 
       default:
         setDays("24h");
-        // setLoading(true);
+        setLoading(true);
         break;
     }
   };
@@ -96,7 +96,7 @@ const CoinDetails = () => {
             <Chart array={chartArray} currency={currencySymbol} days={days} />
           </Box>
 
-          <HStack p={'4'} wrap={'wrap'}>
+          <HStack p={'4'} overflowX={'auto'}>
             {
               btns.map((i) => (
                 <Button key={i} onClick={() => switchChartStats(i)} >{i}</Button>
